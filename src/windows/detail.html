@@ -10,27 +10,19 @@
 
   <link rel="stylesheet" type="text/css" href="../assets/css/main.css">
 </head>
-<body>
-  <header>
-    <h1>
-      Electron meme generator
-    </h1>
-    <p>
-      The unique, the true meme generator
-    </p>
-  </header>
-  <div id="content" class="container">
+<body class="details-page">
+  <div class="editor">
+    <img id="meme" src="" alt=""/>
   </div>
-  <footer>
-    <p>Copyright 2016 - Eric briand, Yvonnick frin</p>
-  </footer>
+  <div class="toolbar">
+    <button class="previous" id="previous"></button>
+  </div>
 
   <script type="text/javascript">
-    require('../renderer-process/grid.js');
+    require('../renderer-process/detail.js');
 
     // install babel hooks in the renderer process
     require('babel-register');
-    require('../assets/js/bootstrap');
   </script>
-</body>
+ </body>
 </html>
