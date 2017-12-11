@@ -1,0 +1,61 @@
+{
+  "name": "electron-start",
+  "productName": "Electron-start",
+  "version": "0.0.0",
+  "description": "Electron bootstrap",
+  "license": "MIT",
+  "repository": "https://github.com/frinyvonnick/electron-start",
+  "homepage": "https://github.com/frinyvonnick/electron-start",
+  "bugs": "frin.yvonnick@gmail.com",
+  "engines": {},
+  "contributors": [],
+  "author": {
+    "name": "FRIN Yvonnick",
+    "email": "frin.yvonnick@gmail.com",
+    "url": "https://github.com/frinyvonnick"
+  },
+  "_moduleAliases": {
+    "src": "./src",
+    "assets": "./src/assets",
+    "windows": "./src/windows",
+    "main-process": "./src/main-process",
+    "renderer-process": "./src/renderer-process"
+  },
+  "build": {
+    "publish": {
+      "GithubOptions": {}
+    }
+  },
+  "scripts": {
+    "start": "cross-env NODE_ENV=development nodemon -e js --watch src/main-process --watch src/index.js --exec 'electron -r babel-register src'",
+    "lint": "standard",
+    "pack": "build --dir -mwl --x64",
+    "dist": "build -mwl --x64"
+  },
+  "keywords": [
+    "boilerplate",
+    "electron",
+    "easy-to-use"
+  ],
+  "dependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "electron-debug": "^1.4.0",
+    "electron-reload": "^1.2.1",
+    "electron-updater": "^2.8.7",
+    "electron-window": "^0.8.1",
+    "glob": "^7.1.2",
+    "module-alias": "^2.0.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "cross-env": "^5.0.5",
+    "devtron": "^1.1.0",
+    "electron": "^1.7.5",
+    "electron-builder": "^19.26.0",
+    "nodemon": "^1.11.0",
+    "standard": "^10.0.3"
+  }
+}
