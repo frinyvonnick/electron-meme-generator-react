@@ -8,7 +8,7 @@ const fs = require('fs')
 
 ipcMain.on('get-memes', (e) => {
   getMemes((memes) => {
-    e.sender.send('memes-sended', memes)
+    e.sender.send('memes-sent', memes)
   })
 })
 

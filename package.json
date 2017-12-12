@@ -10,15 +10,14 @@
     "url": "https://github.com/frinyvonnick/electron-meme-generator/issues"
   },
   "engines": {},
-  "contributors": [],
+  "contributors": [
+    "Eric Briand <eric.briand@zenika.com>"
+  ],
   "author": {
     "name": "FRIN Yvonnick",
     "email": "frin.yvonnick@gmail.com",
     "url": "https://github.com/frinyvonnick"
   },
-  "contributors": [
-    "Eric Briand <eric.briand@zenika.com>"
-  ],
   "_moduleAliases": {
     "src": "./src",
     "assets": "./src/assets",
@@ -43,32 +42,35 @@
     "easy-to-use"
   ],
   "dependencies": {
-    "babel-preset-es2015": "^6.24.1",
+    "babel-plugin-syntax-class-properties": "^6.13.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.26.0",
     "electron-debug": "^1.4.0",
+    "electron-json-storage": "2.0.0",
     "electron-reload": "^1.2.1",
     "electron-updater": "^2.8.7",
     "electron-window": "^0.8.1",
     "glob": "^7.1.2",
+    "jimp": "0.2.27",
+    "lodash": "4.15.0",
     "module-alias": "^2.0.1",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "electron-json-storage": "2.0.0",
-    "jimp": "0.2.27",
-    "lodash": "4.15.0"
+    "react-dom": "^16.2.0"
   },
   "devDependencies": {
-    "cross-env": "^5.0.5",
-    "devtron": "^1.1.0",
-    "electron": "^1.7.5",
-    "electron-builder": "^19.26.0",
-    "nodemon": "^1.11.0",
-    "standard": "^10.0.3",
-    "mocha": "3.0.2",
-    "spectron": "3.3.0",
     "chai": "3.5.0",
     "chai-as-promised": "5.3.0",
-    "devtron": "1.4.0"
+    "cross-env": "^5.0.5",
+    "devtron": "1.4.0",
+    "electron": "^1.7.5",
+    "electron-builder": "^19.26.0",
+    "mocha": "3.0.2",
+    "nodemon": "^1.11.0",
+    "spectron": "3.3.0",
+    "standard": "^10.0.3"
   }
 }
