@@ -10,14 +10,12 @@ export class Grid extends Component {
 
   componentWillMount() {
     ipcRenderer.on('memes-sent', this.handleMemesSent)
-    ipcRenderer.on('selected-files', this.getMemes)
 
     this.getMemes()
   }
 
   componentWillUnMount() {
     ipcRenderer.removeListener('memes-sent', this.handleMemesSent)
-    ipcRenderer.removeListener('selected-files', this.getMemes)
   }
 
   handleMemesSent = (e, memes) => {
@@ -26,14 +24,6 @@ export class Grid extends Component {
 
   getMemes() {
     ipcRenderer.send('get-memes', {})
-  }
-
-  onClick = () => {
-    ipcRenderer.send('open-file-dialog')
-  }
-
-  deleteMeme = index => {
-    ipcRenderer.send('delete-selected-meme', this.state.memes[index])
   }
 
   render() {
@@ -54,7 +44,6 @@ export class Grid extends Component {
           className="card"
           key="new-meme"
           id="new-meme"
-          onClick={this.onClick}
         >
           <div className="img"></div>
           <h3><span>New</span></h3>
