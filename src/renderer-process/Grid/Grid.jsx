@@ -11,7 +11,6 @@ export class Grid extends Component {
   componentWillMount() {
     ipcRenderer.on('memes-sent', this.handleMemesSent)
     ipcRenderer.on('selected-files', this.getMemes)
-    ipcRenderer.on('meme-deleted', this.notifyMemeDeleted)
 
     this.getMemes()
   }
@@ -19,19 +18,10 @@ export class Grid extends Component {
   componentWillUnMount() {
     ipcRenderer.removeListener('memes-sent', this.handleMemesSent)
     ipcRenderer.removeListener('selected-files', this.getMemes)
-    ipcRenderer.removeListener('meme-deleted', this.notifyMemeDeleted)
   }
 
   handleMemesSent = (e, memes) => {
     this.setState({ memes })
-  }
-
-  notifyMemeDeleted = () => {
-    this.getMemes()
-
-    const notification = new Notification('Meme Generator', {
-      body: 'Le meme a bien été supprimé'
-    })
   }
 
   getMemes() {
