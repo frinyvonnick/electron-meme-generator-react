@@ -12,7 +12,6 @@ export class Grid extends Component {
     ipcRenderer.on('memes-sent', this.handleMemesSent)
     ipcRenderer.on('selected-files', this.getMemes)
     ipcRenderer.on('meme-deleted', this.notifyMemeDeleted)
-    ipcRenderer.on('saved-file-grid', this.notifyMemeSaved)
 
     this.getMemes()
   }
@@ -21,18 +20,10 @@ export class Grid extends Component {
     ipcRenderer.removeListener('memes-sent', this.handleMemesSent)
     ipcRenderer.removeListener('selected-files', this.getMemes)
     ipcRenderer.removeListener('meme-deleted', this.notifyMemeDeleted)
-    ipcRenderer.removeListener('saved-file-grid', this.notifyMemeSaved)
   }
 
   handleMemesSent = (e, memes) => {
     this.setState({ memes })
-  }
-
-  notifyMemeSaved(event, path) {
-    if (!path) path = 'No path'
-    const notification = new Notification('Meme Generator', {
-      body: `Le meme a été sauvegardé à l'emplacement ${path}`
-    })
   }
 
   notifyMemeDeleted = () => {
@@ -49,10 +40,6 @@ export class Grid extends Component {
 
   onClick = () => {
     ipcRenderer.send('open-file-dialog')
-  }
-
-  saveMeme = index => {
-    ipcRenderer.send('save-from-grid', this.state.memes[index].path)
   }
 
   deleteMeme = index => {
