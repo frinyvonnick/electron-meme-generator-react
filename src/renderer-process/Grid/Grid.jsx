@@ -1,54 +1,48 @@
 import React, { Component } from 'react'
 import { ipcRenderer } from 'electron'
+import path from 'path'
 
-import { Card } from './Card'
+const defaultMemes = [
+  {
+    title: 'Victory Baby',
+    file: 'baby.jpg'
+  },
+  {
+    title: 'Creepy Condescending Wonka',
+    file: 'chapelier.jpg'
+  },
+  {
+    title: 'Futurama Fry',
+    file: 'futurama.jpg'
+  },
+  {
+    title: 'Grandma Finds The Internet',
+    file: 'grandma.jpg'
+  },
+  {
+    title: 'Picard Wtf',
+    file: 'startrek.png'
+  },
+  {
+    title: 'X, X Everywhere',
+    file: 'toystory.png'
+  },
+  {
+    title: 'Liam Neeson Taken',
+    file: 'taken.jpg'
+  }
+]
 
 export class Grid extends Component {
-  state = {
-    memes: []
-  }
-
-  componentWillMount() {
-    ipcRenderer.on('memes-sent', this.handleMemesSent)
-
-    this.getMemes()
-  }
-
-  componentWillUnMount() {
-    ipcRenderer.removeListener('memes-sent', this.handleMemesSent)
-  }
-
-  handleMemesSent = (e, memes) => {
-    this.setState({ memes })
-  }
-
-  getMemes() {
-    ipcRenderer.send('get-memes', {})
-  }
-
   render() {
-    return [
-      ...this.state.memes.map(({ title, path }, index) => {
-        return (
-          <Card
-            key={title}
-            index={index}
-            title={title}
-            path={path}
-            deleteMeme={this.deleteMeme}
-            saveMeme={this.saveMeme}
-          />
-        )
-      }), (
-        <div
-          className="card"
-          key="new-meme"
-          id="new-meme"
-        >
-          <div className="img"></div>
-          <h3><span>New</span></h3>
+    return defaultMemes.map(({ title, file }, index) => {
+      const url = path.join(__dirname, '..', '..', 'assets', 'img', 'defaults', file)
+      return (
+        <div key={title} className="card meme">
+          <div className="img" style={{ backgroundImage: `url('${url}')` }}></div>
+          <h3 title={title}><span>{title}</span></h3>
         </div>
       )
-    ]
+    })
   }
 }
